@@ -26,9 +26,9 @@
 
 Antes de probar: la tabla `productos` debe tener al menos 7 registros (se cargan con `sql/crud_db.sql`, T-12).
 
-| ID | Prueba | Pasos | Resultado esperado | Estado |
-|---|---|---|---|---|
-| P-01 | Arranque | Abrir `http://localhost:8080` | Redirige a `/productos` y muestra el listado | Pendiente |
+| ID | Prueba | Pasos | Resultado esperado | Estado    |
+|---|---|---|---|-----------|
+| P-01 | Arranque | Abrir `http://localhost:8080` | Redirige a `/productos` y muestra el listado | Cumple    |
 | P-02 | Campos de la tabla | Revisar las columnas | Se ven ID, nombre, precio y stock | Pendiente |
 | P-03 | Casilla por registro | Revisar cada fila | Cada registro tiene su casilla | Pendiente |
 | P-04 | Crear válido | "Nuevo producto", llenar los 3 campos, Guardar | Vuelve al listado con el mensaje "Producto creado correctamente" y aparece el registro | Pendiente |
