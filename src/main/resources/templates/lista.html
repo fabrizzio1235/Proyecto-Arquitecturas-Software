@@ -32,6 +32,12 @@
         <div th:if="${mensaje}" class="alerta ok" th:text="${mensaje}"></div>
         <div th:if="${error}" class="alerta error" th:text="${error}"></div>
 
+        <form th:action="@{/productos}" method="get" class="busqueda">
+            <input type="text" name="q" th:value="${q}" placeholder="Buscar por nombre...">
+            <button type="submit" class="btn">Buscar</button>
+            <a th:href="@{/productos}" class="enlace">Limpiar</a>
+        </form>
+
         <form th:action="@{/productos/eliminar-seleccionados}" method="post" id="formLista">
             <table class="tabla">
                 <thead>
@@ -72,6 +78,25 @@
                 </tbody>
             </table>
         </form>
+
+        <div class="pie">
+            <div class="conteo">
+                Mostrando <b th:text="${pagina.numberOfElements}">0</b>
+                de <b th:text="${pagina.totalElements}">0</b> registros
+            </div>
+            <div class="paginacion" th:if="${pagina.totalPages > 1}">
+                <a th:if="${pagina.hasPrevious()}"
+                   th:href="@{/productos(page=${pagina.number - 1}, q=${q})}">Anterior</a>
+
+                <a th:each="i : ${#numbers.sequence(0, pagina.totalPages - 1)}"
+                   th:href="@{/productos(page=${i}, q=${q})}"
+                   th:text="${i + 1}"
+                   th:classappend="${i == pagina.number} ? 'activa' : ''"></a>
+
+                <a th:if="${pagina.hasNext()}"
+                   th:href="@{/productos(page=${pagina.number + 1}, q=${q})}">Siguiente</a>
+            </div>
+        </div>
     </div>
 </div>
 
