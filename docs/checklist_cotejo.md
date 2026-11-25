@@ -46,3 +46,9 @@ Antes de probar: la tabla `productos` debe tener al menos 7 registros (se cargan
 | P-16 | Acentos y eñes | Crear "Teclado ergonómico niño" | Se guarda y se ve igual en el listado | Pendiente |
 | P-17 | Mensajes de éxito | Después de crear, editar y borrar, recargar la página | El mensaje aparece solo una vez, no se repite al recargar | Pendiente |
 | P-18 | Instalación limpia (T-56) | En otra computadora, abrir el ZIP final en IntelliJ y ejecutar `CrudApplication` | Arranca y se ve el listado | Pendiente |
+| P-19 | Selección entre páginas (SG-02) | Marcar un producto en la página 1, pasar a la 2 y regresar | La casilla sigue marcada y el botón dice “Borrar (1)” | Pendiente |
+| P-20 | Borrar de varias páginas (SG-02) | Marcar uno en la página 1 y otro en la 2 y pulsar Borrar | La confirmación indica el total; al aceptar se eliminan los dos | Pendiente |
+| P-21 | Eliminar individual con selección guardada (SG-02) | Marcar uno y eliminar otro con su bote individual | El marcado sigue marcado y no se elimina | Pendiente |
+| P-22 | Selección vacía tras borrar (SG-02) | Después de borrar, volver al listado | No queda ninguna casilla marcada y el botón Borrar está deshabilitado | Pendiente |
+| P-23 | Selección por pestaña (SG-02) | Marcar uno y abrir `/productos` en otra pestaña | La otra pestaña no muestra nada seleccionado | Pendiente |
+| P-24 | Regresión de la selección (SG-02) | Repetir P-11 y P-12 | Seleccionar todos marca solo la página actual y el botón se habilita y deshabilita bien | Pendiente |
