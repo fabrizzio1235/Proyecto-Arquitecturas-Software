@@ -12,25 +12,28 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-// Clase que implementa la el contrato de ProductoService
-// Delega la lógica de acceso a datos con el repositorio asignado desde
-// su constructor
-
-// findById, deleteById y deleteAllById son métodos definidos por CrudRepository como parte
-// de las librerías de JpaRepository
-
+/**
+ * Implementación de {@link ProductoService}. Delega el acceso a datos en
+ * {@link ProductoRepository}, recibido por el constructor. Los métodos
+ * {@code findById}, {@code deleteById} y {@code deleteAllById} los define
+ * {@code JpaRepository}.
+ */
 @Service
 @Transactional
 public class ProductoServiceImpl implements ProductoService {
 
     private final ProductoRepository repositorio;
 
-    //Inyección de dependencias mediante constructor
+    /**
+     * Crea el servicio con inyección de dependencias por constructor.
+     *
+     * @param repositorio repositorio de productos
+     */
     public ProductoServiceImpl(ProductoRepository repositorio) {
         this.repositorio = repositorio;
     }
 
-    // {@inheritDoc}
+    /** {@inheritDoc} */
     @Override
     @Transactional(readOnly = true)
     public Page<Producto> listar(String busqueda, int pagina, int tamano) {
@@ -40,31 +43,31 @@ public class ProductoServiceImpl implements ProductoService {
         }
         return repositorio.findByNombreContainingIgnoreCase(busqueda.trim(), pageable);
     }
-    // {@inheritDoc}
+
+    /** {@inheritDoc} */
     @Override
     @Transactional(readOnly = true)
     public Producto obtenerPorId(Long id) {
-
         return repositorio.findById(id)
                 .orElseThrow(() -> new ProductoNoEncontradoException(id));
     }
 
-    // {@inheritDoc}
+    /** {@inheritDoc} */
     @Override
     public Producto guardar(Producto producto) {
         return repositorio.save(producto);
     }
-    // {@inheritDoc}
+
+    /** {@inheritDoc} */
     @Override
     public void eliminar(Long id) {
         if (!repositorio.existsById(id)) {
             throw new ProductoNoEncontradoException(id);
         }
-        //deleteById tambien es
         repositorio.deleteById(id);
     }
 
-    // {@inheritDoc}
+    /** {@inheritDoc} */
     @Override
     public int eliminarVarios(List<Long> ids) {
         if (ids == null || ids.isEmpty()) {
