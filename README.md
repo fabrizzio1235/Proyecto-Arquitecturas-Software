@@ -45,7 +45,7 @@ Aplicación web para administrar productos (alta, edición, baja, búsqueda y pa
 | `src/main/resources/templates` | Vistas Thymeleaf (`lista`, `formulario`, `error`) |
 | `src/main/resources/static` | Estilos y script de selección |
 | `sql` | Script de la base de datos |
-| `docs` | Diagramas y checklist de pruebas |
+| `docs` | Diagramas UML (Astah y PDF) |
 
 ### Documentación Javadoc
 
